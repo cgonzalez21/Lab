@@ -43,7 +43,3 @@
     var arr = [1, 2 , 3, 5];
     Module.Methods.init(arr);
 })();
-
-
-//3. Escribir una funcion que reciba un arreglo y retorne la cantidad de pares que encuentre en el arreglo.
-//Un elemento puede ser contado dentro de un solo par.
