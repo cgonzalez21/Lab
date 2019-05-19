@@ -17,32 +17,29 @@
             },
             calc: function(){
                  function crearMatriz(size){
-                    let arr = [];
+                    let arregloP = [];
                     if (isNaN(size)){
                         throw new Module2.Exceptions.UserException("No es un numero: " + size);
                     }else{
-                        for (let i = 0; i < size * size; i++) {
-                            arr.push(Math.floor(Math.random() * (10 - 1)) + 1);
+                        for (let i = 0; i < size; i++) {
+                            let arrTemp = []
+                            for (let j = 0; j < size; j++) {
+                                arrTemp.push(Math.floor(Math.random() * (10 - 1)) + 1);
+                            }
+                            arregloP.push(arrTemp);
                         }
                     }
-                    return arr;
+                    console.log(arregloP);
+                    return arregloP;
                 }
                 function calDiagPrinc(arr){
-                    let j = 0;
                     let sum = 0;
-                    for (let i = 0; i < arr.length; i += 1) {
-                        //1 1 1
-                        //1 1 1
-                        //1 1 1
-                        if(j = i){
-                            sum = sum + arr[i];
-                        }
-                        
+                    for (let i = 0; i < arr.length ; i += 1) {
+                        sum = sum + arr[i][i];
                     }
                     return sum;
                 }
-                console.log(crearMatriz(Module2.Data.size));
-                console.log(calDiagPrinc(crearMatriz(Module2.Data.size)));
+                console.log("La suma de la diagonal principal es: " + calDiagPrinc(crearMatriz(Module2.Data.size)));
             }
         },
         Exceptions:{
@@ -53,5 +50,5 @@
             }
         }
     }
-    Module2.Methods.init(3);
+    Module2.Methods.init(5);
 })();
