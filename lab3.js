@@ -1,14 +1,14 @@
 //2. Funcion que retorne una diagonal principal de una matriz NxN.
 
 (function(){
-    Module2 = {
+    Module = {
         Data :{
             size: undefined,
         },
         Methods:{
             init: function(size){
-                Module2.Data.size = size
-                Module2.Methods.calc();
+                Module.Data.size = size
+                Module.Methods.calc();
             },
             initExceptions: function(){
                 App.Exceptions.UserException.prototype.toString = function(){
@@ -19,7 +19,7 @@
                  function crearMatriz(size){
                     let arregloP = [];
                     if (isNaN(size)){
-                        throw new Module2.Exceptions.UserException("No es un numero: " + size);
+                        throw new Module.Exceptions.UserException("No es un numero: " + size);
                     }else{
                         for (let i = 0; i < size; i++) {
                             let arrTemp = []
@@ -39,7 +39,7 @@
                     }
                     return sum;
                 }
-                console.log("La suma de la diagonal principal es: " + calDiagPrinc(crearMatriz(Module2.Data.size)));
+                console.log("La suma de la diagonal principal es: " + calDiagPrinc(crearMatriz(Module.Data.size)));
             }
         },
         Exceptions:{
@@ -50,5 +50,5 @@
             }
         }
     }
-    Module2.Methods.init(5);
+    Module.Methods.init(5);
 })();

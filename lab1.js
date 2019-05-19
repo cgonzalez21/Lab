@@ -11,7 +11,7 @@
                 App.Methods.calc();
                }else{
                 throw new App.Exceptions.UserException("Numero invalido");
-               }     
+               }
             },
             initExceptions: function(){
                 App.Exceptions.UserException.prototype.toString = function(){
@@ -22,7 +22,7 @@
                 function fibonnaci(n){
                     if (n===1) {
                         return[0, 1];
-                    }  
+                    }
                     else{
                         var s = fibonnaci(n - 1);
                         s.push(s[s.length - 1] + s[s.length - 2]);
