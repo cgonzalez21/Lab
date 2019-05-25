@@ -38,7 +38,6 @@
                         }
                         totalCount = totalCount + ((arrCount[arrAux[i]] - (arrCount[arrAux[i]] % 2))/2);
                     }
-                    console.log(arr);
                     return totalCount;
                 }
                 console.log("Cantidad total de pares es igual a : " + countPairs(Module.Data.arr));
