@@ -28,7 +28,7 @@
                 return Module.Controls.input.value.split(',');
             },
             bindEvents: function(){
-                Module.Controls.form.addEventListener('click', Module.Handlers.onClickForm);
+                Module.Controls.form.addEventListener('submit', Module.Handlers.onClickForm);
             },
             calc:function(arr){
                 let sum = 0;
