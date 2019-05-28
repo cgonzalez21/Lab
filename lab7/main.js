@@ -12,7 +12,7 @@
             onClickForm: function(ev){
                 ev.preventDefault();
                 Module.Data.arr = Module.Methods.getArray();
-                Module.Controls.div.innerHTML = "<p>La sumatoria es : " + Module.Methods.calc(Module.Data.arr) + "</p>";
+                Module.Controls.div.innerHTML = "<p>[" + Module.Data.arr + "]</p><p>La sumatoria es : " + Module.Methods.calc(Module.Data.arr) + "</p>";
             }
         },
         Methods:{
@@ -31,17 +31,27 @@
                 Module.Controls.form.addEventListener('submit', Module.Handlers.onClickForm);
             },
             calc:function(arr){
-                let sum = 0;
-                for (let i = 0; i < arr.length; i += 1) {
-                    if (isNaN(arr[i])) {
-                        throw new Module.Exceptions.UserException("No es un numero: "+ arr[i]);
-                    }else if(arr[i] > 0 && arr[i] < 101){
-                        sum = sum + parseInt(arr[i]);
-                    }else{
-                        throw new Module.Exceptions.UserException("El numero no esta en el rango permitido: " + arr[i]);
+                let arrAux = [];
+                let arrCount = {};
+                let totalCount = 0;
+                let j = 0
+                for (let i = 0; i < arr.length; i++) {
+                    arr.sort();
+                    if (!arrAux.includes(arr[i])) {
+                        arrAux[j] = arr[i];
+                        j++
                     }
                 }
-                return sum;
+                for (let i = 0; i < arrAux.length; i++) {
+                    let count = 0;
+                    for (let j = 0; j < arr.length; j++) {
+                        if(arrAux[i] === arr[j]){
+                            arrCount[arrAux[i]] = count += 1;
+                        }
+                    }
+                    totalCount = totalCount + ((arrCount[arrAux[i]] - (arrCount[arrAux[i]] % 2))/2);
+                }
+                return totalCount;
             },
         },
         Exceptions:{
