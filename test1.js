@@ -6,12 +6,12 @@
 ];*/
 
 piramide = [
-    [75], //00
-    [95, 64],//10,11 - 10
-    [17, 47, 82],//20,21,22 - 21
-    [18, 35, 87, 10],//30,31,32,33 - 32
-    [20, 4, 82, 47, 65],//40,41,42,43,44 - 42
-    [19, 1, 23, 75, 3, 34],//50, 51, 52, 53, 54, 55 - 53
+    [75],
+    [95, 64],
+    [17, 47, 82],
+    [18, 35, 87, 10],
+    [20, 4, 82, 47, 65],
+    [19, 1, 23, 75, 3, 34],
     [88, 2, 77, 73, 7, 63, 67],
     [99, 65, 4, 28, 6, 16, 70, 92],
     [41, 41, 26, 56, 83, 40, 80, 70, 33],
@@ -28,7 +28,6 @@ var x = 1;
 var y = 0;
 var index = 0;
 
-//sum[0] = (piramide[0][0] + piramide[1][1]) > (piramide[0][0] + piramide[1][0]) ? piramide[0][0] + piramide[1][1] : piramide[0][0] + piramide[1][0];
 if ((piramide[0][0] + piramide[1][0]) > (piramide[0][0] + piramide[1][1])) {
     sum[0] = piramide[0][0] + piramide[1][0];
     y = 0;
@@ -37,10 +36,7 @@ if ((piramide[0][0] + piramide[1][0]) > (piramide[0][0] + piramide[1][1])) {
     y = 1;
 }
 for (let i = 2; i < piramide.length; i++) {
-    console.log(y);
     for (let j = y; j <= y + 1; j++) {
-        //sum[x] = sum[x] >= (sum[x - 1] + piramide[i][j]) ? sum[x] : sum[x - 1] + piramide[i][j];
-        //console.log(piramide[i][j])
         if (sum[x] >= (sum[x - 1] + piramide[i][j])) {
             sum[x] = sum[x];
             index = y;
@@ -49,8 +45,8 @@ for (let i = 2; i < piramide.length; i++) {
             index = j;
         }
     }
-    //console.log(index);
     x++;
     y = index;
 }
-console.log(sum);
+console.log(piramide);
+console.log("La suma total de la piramide es: " + sum[x - 1]);
