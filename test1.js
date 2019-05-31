@@ -23,30 +23,15 @@ piramide = [
     [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23],
 ]
 
-var sum = [];
-var x = 1;
-var y = 0;
-var index = 0;
+piramide[1][0] = piramide[0][0] + piramide[1][0];
+piramide[1][1] = piramide[0][0] + piramide[1][1];
 
-if ((piramide[0][0] + piramide[1][0]) > (piramide[0][0] + piramide[1][1])) {
-    sum[0] = piramide[0][0] + piramide[1][0];
-    y = 0;
-}else{
-    sum[0] = piramide[0][0] + piramide[1][1];
-    y = 1;
-}
 for (let i = 2; i < piramide.length; i++) {
-    for (let j = y; j <= y + 1; j++) {
-        if (sum[x] >= (sum[x - 1] + piramide[i][j])) {
-            sum[x] = sum[x];
-            index = y;
-        }else{
-            sum[x] = sum[x - 1] + piramide[i][j];
-            index = j;
-        }
+    piramide[i][0] = piramide[i][i - 1] + piramide[i - 1][0];
+    piramide[i][i - 1] = piramide[i][i] + piramide[i - 1][i - 1];
+    for (let j = 1; j <= piramide.length + 1; j++) {
+
     }
-    x++;
-    y = index;
-}
+ }
 console.log(piramide);
 console.log("La suma total de la piramide es: " + sum[x - 1]);
