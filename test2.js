@@ -31,13 +31,13 @@ var i = 0;
 var siguiente = 0;
 var str = "";
 
-while(i <= piramide.length){
-    str = str + "" + piramide[0][0];
-    sum = piramide[0][0];
+while(siguiente <= piramide.length - 1){
+    sum = 0;
+    i = 0;
     for (let j = 0; j < piramide.length; j++) {
-        if(j = siguiente){
-            i += 1;
-        }    
+        if(j === siguiente && siguiente != 0){
+            i += siguiente;
+        }
         sum += piramide[j][i];
         str = str + " + " + piramide[j][i]
     }
