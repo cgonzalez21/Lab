@@ -1,0 +1,25 @@
+{
+  "name": "javascript",
+  "version": "0.0.1",
+  "description": "este es un proyecto donde mostraremos un ejemplo 16 de desarrollo de software IX",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "jest"
+  ],
+  "author": "Este",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "pug": "^2.0.3",
+    "yes": "^1.1.1"
+  }
+}
