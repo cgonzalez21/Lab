@@ -1,17 +1,34 @@
-const express = require('express')
-const app = express()
-const PORT = 3000;
+const path = require('path');
+var express = require('express');
+var app = express();
 
-app.get('/', function (req, res) {
-    const profesor = {
-        name: "Erick Agrazal",
-        age: "28",
-    };
-    res.json(profesor);
-})
+const PORT = 3000
+const estudiantes = [
+  {id:0, nombre:"Joel DosPunto",edad:230},
+  {id:1, nombre:"Alix Viloria",edad:25},
+  {id:2, nombre:"Jomel McDonald",edad:25}
+];
 
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}...`)
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine','pug');
+
+app.get('/api/v1/estudiantes/', function (req, res) {
+  const resp = {estudiantes,count: estudiantes.length}
+  res.json(resp);
+  //res.send('Hello World!');
+});
+
+app.get('/api/v1/estudiantes/:id', (req, res) => {
+  const { params:{id }} = req;
+  res.json(estudiantes[id]);
+});
+
+app.get('/estudiantes',(req,res) =>{
+    res.render("estudiantes/list.pug")
+});
+
+app.listen(PORT, function () {
+  console.log(`Example app listening on port ${PORT}!`);
 });
 
 //Documentacion https://expressjs.com/es/guide/routing.html
