@@ -15,7 +15,6 @@ app.set('view engine','pug');
 app.get('/api/v1/estudiantes/', function (req, res) {
   const resp = {estudiantes,count: estudiantes.length}
   res.json(resp);
-  //res.send('Hello World!');
 });
 
 app.get('/api/v1/estudiantes/:id', (req, res) => {
