@@ -1,13 +1,37 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Document
-    body
-        h1 Ejemplo 17
-            form
-                label Numero
-                input(type="number")
-                input(type="submit")
+
+extends base.pug
+
+block content
+    form.js-form
+        span.text-muted Eleva al cuadrado el numero dado
+        .form-group
+            label Numero
+            input.js-form-number.form-control(type="number")
+            button.btn.btn-primary.btn-block.mt-3(type="submit") Calcular
+
+block extra_js
+    script.
+        (function(){
+            var Module = {
+                Controls:{
+                    form: document.querySelector('.js-form'),
+                    input: document.querySelector('.js-form-number'),
+                },
+                Handlers:{
+                    onFormSubmit: function(){
+                        $.ajax({
+                            data: Module.Control.form.value,
+                            Method: 'POST'
+                        }).then().catch();
+                    },
+                    onFormSubmitSuccess: function(resp){
+                        
+                    }
+                },
+                Methods: {
+                    init: function(){
+                        Module.Controls.form.AddEventListener('submit', Module.Handlers.onFormSubmit);
+                    }
+                }
+            }
+        })();
