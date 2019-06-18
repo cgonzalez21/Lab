@@ -18,20 +18,28 @@ block extra_js
                     input: document.querySelector('.js-form-number'),
                 },
                 Handlers:{
-                    onFormSubmit: function(){
+                    onFormSubmit: function(event){
+                        event.preventDefault();
                         $.ajax({
-                            data: Module.Control.form.value,
+                            data: {
+                                number: Module.Controls.input.value,
+                            },
                             Method: 'POST'
-                        }).then().catch();
+                        }).then(Module.Handlers.onFormSubmitSuccess)
+                          .catch(Module.Handlers.onFormSubmitError);
                     },
                     onFormSubmitSuccess: function(resp){
-                        
+                        console.log(resp);
+                    },
+                    onFormSubmitError: function(err){
+                        console.log(err)
                     }
                 },
                 Methods: {
                     init: function(){
-                        Module.Controls.form.AddEventListener('submit', Module.Handlers.onFormSubmit);
+                        Module.Controls.form.addEventListener('submit', Module.Handlers.onFormSubmit);
                     }
                 }
             }
+            Module.Methods.init();
         })();
