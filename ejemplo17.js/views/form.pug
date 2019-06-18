@@ -24,7 +24,7 @@ block extra_js
                             data: {
                                 number: Module.Controls.input.value,
                             },
-                            Method: 'POST'
+                            method: 'POST'
                         }).then(Module.Handlers.onFormSubmitSuccess)
                           .catch(Module.Handlers.onFormSubmitError);
                     },
