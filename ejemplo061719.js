@@ -8,5 +8,6 @@ function getSquareRoot(n){
 }
 
 module.exports = {
-    getSquare
+    getSquare,
+    getSquareRoot
 }
