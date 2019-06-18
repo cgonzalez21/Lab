@@ -17,13 +17,17 @@ app.use(bodyParser());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('form.pug')
+    res.render('mainmenu.pug')
 });
 
-app.post('/', (req, res) =>{
+app.get('/lab8', (req, res) => {
+    res.render('lab8.pug')
+});
+
+/*app.post('/', (req, res) =>{
     const { number } = req.body;
     res.json({message: `El cuadrado del numero es ${getSquare(number)} y la raiz del numero es ${getSquareRoot(number)}`});
-});
+});*/
 
 app.listen(port, () => {
     console.log(`La aplicacion se esta ejecutando en el puerto: ` + port);
