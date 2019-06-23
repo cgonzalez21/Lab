@@ -9,11 +9,31 @@
             result: document.querySelector('.js-result'),
         },
         Handlers:{
-            onClickForm: function(ev){
+            onSubmitForm: function(ev){
                 ev.preventDefault();
-                Module.Data.arr = Module.Methods.getArray();
-                Module.Controls.result.innerHTML = "<p>La sumatoria es : " + Module.Methods.calc(Module.Data.arr) + "</p>";
-            }
+                //Module.Data.arr = Module.Methods.getArray();
+                //Module.Controls.result.innerHTML = "<p>La sumatoria es : " + Module.Methods.calc(Module.Data.arr) + "</p>";
+                $.ajax({
+                    url: '/lab/lab8',
+                    data: {
+                        arr : Module.Methods.getArray(),
+                    },
+                    method: 'POST'
+                }).then(Module.Handlers.onFormSubmitSuccess)
+                  .catch(Module.Handlers.onFormSubmitError);
+            },
+            onFormSubmitSuccess: function(resp){
+                //console.log(resp.message);
+                Module.Controls.result.innerHTML = `<div class="alert alert-success" role="alert">
+                                                        <p>${resp.message}</p>
+                                                    </div>`;
+            },
+            onFormSubmitError: function(err){
+                //console.log(err);
+                Module.Controls.result.innerHTML = `<div class="alert alert-danger" role="alert">
+                                                        <p>ERROR</p>
+                                                    </div>`;
+            },
         },
         Methods:{
             init: function(){
@@ -28,20 +48,7 @@
                 return Module.Controls.input.value.split(',');
             },
             bindEvents: function(){
-                Module.Controls.form.addEventListener('submit', Module.Handlers.onClickForm);
-            },
-            calc:function(arr){
-                let sum = 0;
-                for (let i = 0; i < arr.length; i += 1) {
-                    if (isNaN(arr[i])) {
-                        throw new Module.Exceptions.UserException("No es un numero: "+ arr[i]);
-                    }else if(arr[i] > 0 && arr[i] < 101){
-                        sum = sum + parseInt(arr[i]);
-                    }else{
-                        throw new Module.Exceptions.UserException("El numero no esta en el rango permitido: " + arr[i]);
-                    }
-                }
-                return sum;
+                Module.Controls.form.addEventListener('submit', Module.Handlers.onSubmitForm);
             },
         },
         Exceptions:{

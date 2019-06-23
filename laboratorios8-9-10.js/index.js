@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 
-const { getSquare, getSquareRoot } = require('./utils/functions.js');
+const { sumaArreglo } = require('./utils/functions.js');
 
 //Configuraciones
 app.set('view engine', 'pug');
@@ -32,10 +32,10 @@ app.get('/lab/lab10', (req, res) => {
     res.render('lab10.pug')
 });
 
-/*app.post('/', (req, res) =>{
-    const { number } = req.body;
-    res.json({message: `El cuadrado del numero es ${getSquare(number)} y la raiz del numero es ${getSquareRoot(number)}`});
-});*/
+app.post('/lab/lab8', (req, res) =>{
+    const { arr } = req.body;
+    res.json({message: `La suma del arreglo es : ${sumaArreglo(arr)}`});
+});
 
 app.listen(port, () => {
     console.log(`La aplicacion se esta ejecutando en el puerto: ` + port);
