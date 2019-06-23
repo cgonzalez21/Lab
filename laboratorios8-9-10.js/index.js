@@ -20,8 +20,16 @@ app.get('/', (req, res) => {
     res.render('mainmenu.pug')
 });
 
-app.get('/lab8', (req, res) => {
+app.get('/lab/lab8', (req, res) => {
     res.render('lab8.pug')
+});
+
+app.get('/lab/lab9', (req, res) => {
+    res.render('lab9.pug')
+});
+
+app.get('/lab/lab10', (req, res) => {
+    res.render('lab10.pug')
 });
 
 /*app.post('/', (req, res) =>{
