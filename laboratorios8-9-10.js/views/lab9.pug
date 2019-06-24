@@ -1,8 +1,20 @@
 extends base.pug
 
 block content
-    h1 Hello World
-    button.js-button.btn.btn-success.btn-lg(type='button').mt-3 Regresar
+    .card.bg-primary.mb-3
+        .card-header.text-center
+            h3 Diagonal Principal de una Matriz N
+        .card-body    
+            form.js-form(action='')
+                .form-group
+                    label(for='arr') Tamaño 
+                    input.js-form-arr.form-control(name='arr', type='text', placeholder='Ingresar el tamaño de la matriz')
+                button.btn.btn-success(type='submit') Ingresar
+    .js-result
+
+    button.js-button.btn.btn-warning.btn-lg.mt-3(type='button').mt-3 Regresar
 
 block extra_js
     script(src="/public/js/back.js")
+    script(src="/public/js/lab9.js")
+    

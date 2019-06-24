@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 
-const { sumaArreglo } = require('./utils/functions.js');
+const { sumaArreglo, crearMatriz, calDiagPrinc, countPairs, } = require('./utils/functions.js');
 
 //Configuraciones
 app.set('view engine', 'pug');
@@ -35,6 +35,17 @@ app.get('/lab/lab10', (req, res) => {
 app.post('/lab/lab8', (req, res) =>{
     const { arr } = req.body;
     res.json({message: `La suma del arreglo es : ${sumaArreglo(arr)}`});
+});
+
+app.post('/lab/lab9', (req, res) =>{
+    const { size } = req.body;
+    let arr = crearMatriz(size);
+    res.json({result: `La diagonal principal es: ${calDiagPrinc(arr)}`, array: arr});
+});
+
+app.post('/lab/lab10', (req, res) =>{
+    const { arr } = req.body;
+    res.json({result: `La cantidad de pares es: ${countPairs(arr)}`});
 });
 
 app.listen(port, () => {

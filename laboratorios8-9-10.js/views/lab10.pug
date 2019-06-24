@@ -1,8 +1,17 @@
 extends base.pug
 
 block content
-    h1 Hello World
-    button.js-button.btn.btn-success.btn-lg(type='button').mt-3 Regresar
-
+    .card.bg-primary.mb-3
+        .card-header.text-center
+            h3 Suma de los pares dentro de un arreglo
+        .card-body
+            form.js-form(action='')
+                .form-group
+                    label(for='arr') Ingrese un arreglo
+                    input.js-form-arr.form-control(name='arr', type='text', placeholder='Ingresar un arreglo de numeros enteros')
+                button.btn.btn-success(type='submit') Ingresar
+            .js-result
+    button.js-button.btn.btn-warning.btn-lg.mt-3(type='button') Regresar
 block extra_js
     script(src="/public/js/back.js")
+    script(src="/public/js/lab10.js")
